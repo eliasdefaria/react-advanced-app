@@ -1,0 +1,14 @@
+/********* FETCH FUNCTION ************/
+
+fetch(<url>, {
+  method: <string>.
+  body: <object>,
+  ...other options
+}).then(res=>res.json());
+
+API URL: http://reactrecipes.herokuapp.com
+
+ENDPOINTS:
+  GET /v1/recipes : Retrieve a JSON array of recipes id, name, and category
+  GET /v1/recipes/:id : Get the detail of a recipe of the given id. Includes same data above plus calories, image, ingredients, and steps.
+  
