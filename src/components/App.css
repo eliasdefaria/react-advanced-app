@@ -34,6 +34,13 @@
 .flex-5{
   flex: 5;
 }
+html{
+  background-color: teal;
+}
+
+.ml-4{
+  margin-left: 4rem;
+}
 
 @keyframes App-logo-spin {
   from {
