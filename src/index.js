@@ -4,7 +4,7 @@ import './index.css';
 import App from './components/App';
 import * as serviceWorker from './serviceWorker';
 
-const MOUNT_ELEMENT = document.querySelector('#root')
+const MOUNT_ELEMENT = document.querySelector('#root');
 
 ReactDOM.render(<App />, MOUNT_ELEMENT);
 

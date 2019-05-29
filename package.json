@@ -3,6 +3,7 @@
   "version": "0.1.0",
   "private": true,
   "dependencies": {
+    "babel-eslint": "^10.0.1",
     "dotenv": "^8.0.0",
     "prop-types": "^15.7.2",
     "react": "^16.8.6",
@@ -15,7 +16,7 @@
     "build": "react-scripts build",
     "test": "react-scripts test",
     "eject": "react-scripts eject",
-    "lint" : "./node_modules/.bin/eslint ./src"
+    "lint": "./node_modules/.bin/eslint ./src"
   },
   "eslintConfig": {
     "extends": "react-app"
