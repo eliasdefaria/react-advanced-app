@@ -34,12 +34,25 @@
 .flex-5{
   flex: 5;
 }
+
+.justify-center{
+  justify-content: center;
+}
 html{
   background-color: teal;
 }
 
 .ml-4{
   margin-left: 4rem;
+}
+
+.m-auto{
+  margin: auto 0 !important;
+}
+
+.black-text{
+  color: black;
+  text-decoration: none;
 }
 
 @keyframes App-logo-spin {
