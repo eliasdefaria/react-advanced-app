@@ -5,55 +5,55 @@ import RecipeList from './RecipeList';
 import RecipeDetail from './RecipeDetail';
 import './App.css';
 
-
 const BigButton = styled.button`
   padding: 50px;
   background-color: red;
 `;
 
-class App extends React.Component{
-
-  constructor(props){
+class App extends React.Component {
+  constructor(props) {
     super(props);
 
     this.state = {
       recipes: [],
       currentRecipe: null,
-      isOpen: true,
+      isOpen: true
     };
-
   }
 
-  componentDidMount(){
+  componentDidMount() {
     fetch(`${process.env.REACT_APP_API_URL}/v1/recipes`)
       .then(res => res.json())
       .then(recipes => this.setState({ recipes }));
   }
 
-  onRecipeClick = (id) => {
+  onRecipeClick = id => {
     fetch(`${process.env.REACT_APP_API_URL}/v1/recipes/${id}`)
       .then(res => res.json())
       .then(recipe => this.setState({ currentRecipe: recipe }));
-  }
+  };
 
   onButtonClick = () => {
     this.setState(prevState => ({ isOpen: !prevState.isOpen }));
-  }
+  };
 
-  render(){
+  render() {
     const { recipes, currentRecipe, isOpen } = this.state;
-    return(
+    return (
       <div className="teal-background">
-        <Header width="100" open={ isOpen }/>
+        <Header width="100" open={isOpen} />
         <main className="d-flex">
-          <RecipeList recipes={ recipes } onClick={ this.onRecipeClick } className="flex-3"/>
-          <RecipeDetail details={ currentRecipe } className="flex-5" />
+          <RecipeList
+            recipes={recipes}
+            onClick={this.onRecipeClick}
+            className="flex-3"
+          />
+          <RecipeDetail details={currentRecipe} className="flex-5" />
         </main>
-        <BigButton onClick={ this.onButtonClick }/>
+        <BigButton onClick={this.onButtonClick} />
       </div>
     );
   }
-
 }
 
 export default App;
