@@ -1,59 +1,26 @@
 import React from 'react';
-import styled from 'styled-components';
+import { BrowserRouter, Route, Switch } from 'react-router-dom';
+import Home from './Home';
+import Favorites from './Favorites';
 import Header from './Header';
-import RecipeList from './RecipeList';
-import RecipeDetail from './RecipeDetail';
-import './App.css';
+import NotFound from './NotFound';
 
-const BigButton = styled.button`
-  padding: 50px;
-  background-color: red;
-`;
+const App = () => {
 
-class App extends React.Component {
-  constructor(props) {
-    super(props);
+  return (
+    <BrowserRouter>
+      <main>
+        <Header width="100" />
+        <Switch>
+          <Route exact path="/" component={Home} />
+          <Route path="/favorites" component={Favorites} />
+          <Route component={NotFound}/>
+        </Switch>
+      </main>
 
-    this.state = {
-      recipes: [],
-      currentRecipe: null,
-      isOpen: true
-    };
-  }
+    </BrowserRouter>
+  )
 
-  componentDidMount() {
-    fetch(`${process.env.REACT_APP_API_URL}/v1/recipes`)
-      .then(res => res.json())
-      .then(recipes => this.setState({ recipes }));
-  }
-
-  onRecipeClick = id => {
-    fetch(`${process.env.REACT_APP_API_URL}/v1/recipes/${id}`)
-      .then(res => res.json())
-      .then(recipe => this.setState({ currentRecipe: recipe }));
-  };
-
-  onButtonClick = () => {
-    this.setState(prevState => ({ isOpen: !prevState.isOpen }));
-  };
-
-  render() {
-    const { recipes, currentRecipe, isOpen } = this.state;
-    return (
-      <div className="teal-background">
-        <Header width="100" open={isOpen} />
-        <main className="d-flex">
-          <RecipeList
-            recipes={recipes}
-            onClick={this.onRecipeClick}
-            className="flex-3"
-          />
-          <RecipeDetail details={currentRecipe} className="flex-5" />
-        </main>
-        <BigButton onClick={this.onButtonClick} />
-      </div>
-    );
-  }
 }
 
 export default App;
