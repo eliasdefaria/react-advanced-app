@@ -19,6 +19,7 @@ const Link = styled(NavLink)`
   background-color: white;
   transition: background-color 0.4s ease-in-out;
   border-radius: 5px;
+  color: black;
 
   &:hover {
     background-color: inherit;
@@ -45,14 +46,10 @@ class Header extends React.Component {
       <Heading>
         <h1 onClick={this.toggleOpen}>My Recipes App</h1>
         <NavWrapper isOpen={this.state.isOpen}>
-          <Link to="/" className="m-auto black-text" activeClassName="">
+          <Link to="/" className="m-auto" activeClassName="">
             Home
           </Link>
-          <Link
-            to="/favorites"
-            className="m-auto black-text"
-            activeClassName=""
-          >
+          <Link to="/favorites" className="m-auto" activeClassName="">
             Favorites
           </Link>
         </NavWrapper>

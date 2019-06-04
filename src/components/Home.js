@@ -1,5 +1,6 @@
 import React from 'react';
 import styled from 'styled-components';
+import PropTypes from 'prop-types';
 import RecipeList from './RecipeList';
 import RecipeDetail from './RecipeDetail';
 import './App.css';
@@ -14,7 +15,6 @@ class Home extends React.Component {
     super(props);
 
     this.state = {
-      recipes: [],
       currentRecipe: null
     };
   }
@@ -32,14 +32,18 @@ class Home extends React.Component {
   };
 
   render() {
-    const { recipes, currentRecipe } = this.state;
+    const { favorites, recipes } = this.props.state;
+    const { currentRecipe } = this.state;
     return (
       <div className="teal-background">
         <main className="d-flex">
+          <h2>Recipes</h2>
           <RecipeList
             recipes={recipes}
+            favorites={favorites}
             onClick={this.onRecipeClick}
             className="flex-3"
+            onFavorited={this.props.toggleFavorite}
           />
           <RecipeDetail details={currentRecipe} className="flex-5" />
         </main>
@@ -48,5 +52,10 @@ class Home extends React.Component {
     );
   }
 }
+
+Home.propTypes = {
+  state: PropTypes.object,
+  toggleFavorite: PropTypes.func
+};
 
 export default Home;
